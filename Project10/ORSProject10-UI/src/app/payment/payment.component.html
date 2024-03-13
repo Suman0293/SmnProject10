@@ -1,0 +1,71 @@
+
+ <app-navbar></app-navbar>
+<br>
+<br>
+<br>
+<style>
+  .error {
+      color: red;
+      font-weight: bold;
+  }
+
+  .success {
+      color: green;
+      font-weight: bold;
+  }
+
+  input,
+  select {
+      width: 250px;
+  }
+
+  th,
+  td {
+      padding: 5px;
+  }
+</style>
+
+<div align="center" >
+ <div>
+  
+  <h2 *ngIf="!form.data.id>0" class="text-primary font-weight-bold" style="text-align: center;">{{'Add Payment' |
+    translate }}</h2>
+  <h2 *ngIf="form.data.id>0" class="text-primary font-weight-bold" style="text-align: center;">{{'Update Payment' |
+    translate }}</h2>
+    
+  <br>
+
+  
+
+  <div><h5 style="color: green" *ngIf="form.message != null">{{form.message}}</h5></div>
+  
+  <br>
+    <label>Payment Modes :-</label>
+    <input type="text" [(ngModel)]="form.data.paymentMode" name="paymentMode">
+    <div style="color: red;" *ngIf="form.inputerror !=null">{{form.inputerror.paymentMode}}</div>
+  </div>
+  
+  <div>
+    <label>Payment Amount :- </label>
+    <input type="text" [(ngModel)]="form.data.paymentAmount" name="paymentAmount">
+    <div style="color: red;" *ngIf="form.inputerror !=null">{{form.inputerror.paymentAmount}}</div>
+  </div>
+  
+  <div>
+    <label>Payment Status :- </label>
+    <input type="text" [(ngModel)]="form.data.paymentStatus" name="paymentStatus">
+    <div style="color: red;" *ngIf="form.inputerror !=null">{{form.inputerror.paymentStatus}}</div>
+  </div>
+ 
+
+  <div *ngIf="form.data.id > 0">
+    <button (click)="update()">Update</button>
+  </div>
+
+  <div *ngIf="!form.data.id > 0">
+    <button (click)="save()">Save</button>
+  </div>
+  
+</div>
+
+<app-footer></app-footer> 

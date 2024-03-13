@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<br>
+<style>
+  .error {
+      color: red;
+      font-weight: bold;
+  }
+
+  .success {
+      color: green;
+      font-weight: bold;
+  }
+
+  input,
+  select {
+      width: 250px;
+  }
+
+  th,
+  td {
+      padding: 5px;
+  }
+</style>
+<div align="center">
+  <h2 style="color: navy">Manufacturer List</h2></div>
+<table>
+  
+    
+    
+</table>
+<div *ngIf="!form.error && form.message != null" class="alert alert-success alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {{form.message}}
+  </div>
+
+<table  align="right">
+  <tr>
+    <th></th>
+    <td>
+       <button (click)="delete()">delete</button>
+    </td>
+  </tr>
+</table>
+<br>
+
+
+<table border="1" width="100%">
+    <tr align="center">
+        <th width="20%">Select</th>
+        <th width="15%">ID</th>
+        <th width="15%">manufacturerName</th>
+        <th width="15%">manufacturerPrice</th>
+        <th width="25%">edit</th>
+    </tr>
+    <tr *ngFor="let m of form.list; let i = index" align="center">
+
+       <td> <input type="checkbox" (change)="onCheckboxChange(m.id)" /></td>
+        <td>{{m.id}}</td>
+        <td>{{m.manufacturerName}}</td>
+        <td>{{m.manufacturerPrice}}</td>
+        <td><button (click)="forward('/manufacturer/'+m.id)">edit</button></td>
+    </tr>
+</table>
+
+
+<table style="width: 100%;">
+  <tr>
+    <td style="width: 100%;">
+<button (click)="previous()" [disabled]="form.pageNo==0" class="btn btn-info"> {{'Previous' | translate
+  }} </button></td>
+
+  <td><button (click)="next()" [disabled]="nextList==0" class="btn btn-info"> {{'Next' |
+    translate }}</button></td>
+  </tr>
+  </table> 
+
+<app-footer></app-footer>
